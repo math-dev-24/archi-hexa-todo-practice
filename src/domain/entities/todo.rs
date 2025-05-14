@@ -14,7 +14,8 @@ pub struct Todo {
 }
 
 impl Todo {
-    pub fn new(id: u64, title: String, description: String) -> Todo {
+    pub fn new(title: String, description: String) -> Todo {
+        let id = rand::random();
         Todo {
             id,
             title,
@@ -23,6 +24,18 @@ impl Todo {
             created_at: Utc::now(),
             updated_at: Utc::now(),
         }
+    }
+
+    pub fn set_completed(&mut self, completed: bool) {
+        self.completed = completed;
+    }
+
+    pub fn set_title(&mut self, title: String) {
+        self.title = title;
+    }
+
+    pub fn set_description(&mut self, description: String) {
+        self.description = description;
     }
 
     pub fn str(&self) -> String {
