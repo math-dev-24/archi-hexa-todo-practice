@@ -2,7 +2,6 @@ pub mod adapters;
 pub mod domain;
 
 use std::io;
-use chrono::Datelike;
 use adapters::repository::json_repository::JsonRepository;
 use domain::services::todo_service::TodoService;
 use domain::entities::todo::Todo;
