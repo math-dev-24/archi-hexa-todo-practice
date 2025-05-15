@@ -14,6 +14,19 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
 
       - name: Lancer les tests
+        id: run_tests
         run: |
           echo "Lancement des tests"
           cargo test
+          echo "status=success" >> $GITHUB_OUTPUT
+        continue-on-error: false
+
+      - name: Résultat des tests
+        if: success()
+        run: |
+          echo "✅ Tous les tests ont réussi avec succès!"
+
+      - name: Notification d'échec
+        if: failure()
+        run: |
+          echo "❌ Certains tests ont échoué. Veuillez consulter les logs ci-dessus pour plus de détails."
